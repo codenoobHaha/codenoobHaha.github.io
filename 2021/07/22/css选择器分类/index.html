@@ -5,14 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>css选择器分类 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://codenoobhaha.github.io/index.html">
+  <meta name="description" content="1.什么是css选择器？mdn中的解释是：CSS选择器是CSS规则的第一部分。它是元素和其他部分组合起来告诉浏览器哪个HTML元素应当是被选为应用规则中的CSS属性值的方式。选择器所选择的元素，叫做“选择器的对象”。 2.选择器分类 类型(标签)选择器类型选择器有时也叫做“标签名选择器”或者是”元素选择器“，因为它在文档中选择了一个HTML标签&#x2F;元素的缘故 12345678910111213141">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css选择器分类">
+<meta property="og:url" content="http://codenoobhaha.github.io/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.什么是css选择器？mdn中的解释是：CSS选择器是CSS规则的第一部分。它是元素和其他部分组合起来告诉浏览器哪个HTML元素应当是被选为应用规则中的CSS属性值的方式。选择器所选择的元素，叫做“选择器的对象”。 2.选择器分类 类型(标签)选择器类型选择器有时也叫做“标签名选择器”或者是”元素选择器“，因为它在文档中选择了一个HTML标签&#x2F;元素的缘故 12345678910111213141">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-22T13:20:48.000Z">
+<meta property="article:modified_time" content="2021-07-22T14:57:49.165Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -62,161 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-ccsss层叠与继承" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/" class="article-date">
-  <time datetime="2021-07-22T14:57:40.000Z" itemprop="datePublished">2021-07-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/">css层叠与继承</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是层叠？"><a href="#什么是层叠？" class="headerlink" title="什么是层叠？"></a>什么是层叠？</h2><p> 简单的说，css规则的顺序很重要；当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123; </span><br><span class="line">    color: red; </span><br><span class="line">&#125;</span><br><span class="line">h1 &#123; </span><br><span class="line">    color: blue; </span><br><span class="line">&#125;</span><br><span class="line">&lt;h1&gt;This is my heading.&lt;/h1&gt; &lt;!--会变蓝--&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>浏览器是根据优先级来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。它基本上是一个衡量选择器具体选择哪些区域的尺度：</p>
-</li>
-<li><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>一些设置在父元素上的css属性是可以被子元素继承的，有些则不能。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">span &#123;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;没设置也变蓝&lt;/p&gt;</span><br><span class="line">&lt;p&gt;没设置也变蓝&lt;span&gt;没变，因为指定了颜色&lt;/span&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>控制继承</p>
-<p>CSS 为控制继承提供了四个特殊的通用属性值。每个css属性都接收这些值。</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit"><code>inherit</code></a></p>
-<p>设置该属性会使子元素属性和父元素相同。实际上，就是 “开启继承”.</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial"><code>initial</code></a></p>
-<p>设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 <code>inherit</code> 。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset"><code>unset</code></a></p>
-<p>将属性重置为自然值，也就是如果属性是自然继承那么就是 <code>inherit</code>，否则和 <code>initial</code>一样</p>
-</li>
-</ul>
-<p><strong>注</strong>: 还有一个新的属性, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/revert"><code>revert</code> (en-US)</a>， 只有很少的浏览器支持。</p>
-</li>
-</ul>
-</li>
-<li><h3 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h3><p>​    有三个因素需要考虑，根据重要性排序如下，前面的更重要：</p>
-<pre><code>    1. 重要程度
-    2. 优先级
-    3. 资源顺序
-</code></pre>
-<ul>
-<li><p>资源顺序</p>
-<p>如果你有超过一条规则，而且都是相同的权重，那么最后面的规则会应用。可以理解为后面的规则覆盖前面的规则，直到最后一个开始设置样式。</p>
-</li>
-<li><p>优先级</p>
-<p>在一些情况下，有些规则在最后出现，但是却应用了前面的规则。这是因为前面的有更高的<strong>优先级</strong> — 它范围更小，因此浏览器就把它选择为元素的样式。</p>
-<p>一个选择器的优先级可以说是由四个部分相加 (分量)，可以认为是个十百千 — 四位数的四个位数：</p>
-<ol>
-<li><strong>千位</strong>： 如果声明在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-style"><code>style</code></a> 的属性（内联样式）则该位得一分。这样的声明没有选择器，所以它得分总是1000。</li>
-<li><strong>百位</strong>： 选择器中包含ID选择器则该位得一分。</li>
-<li><strong>十位</strong>： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。</li>
-<li><strong>个位</strong>：选择器中包含元素、伪元素选择器则该位得一分。</li>
-<li><strong>注</strong>: 通用选择器 (<code>*</code>)，组合符 (<code>+</code>, <code>&gt;</code>, <code>~</code>, ‘ ‘)，和否定伪类 (<code>:not</code>) 不会影响优先级。</li>
-<li><strong>警告:</strong> 在进行计算时不允许进行进位，例如，20 个类选择器仅仅意味着 20 个十位，而不能视为 两个百位，也就是说，无论多少个类选择器的权重叠加，都不会超过一个 ID 选择器。</li>
-</ol>
-</li>
-<li><p>重要程度</p>
-<p>指的是<code>!important</code></p>
-<p>有一个特殊的 CSS 可以用来覆盖所有上面所有优先级计算，不过需要很小心的使用 — <code>!important</code>。用于修改特定属性的值， 能够覆盖普通规则的层叠。</p>
-<p><strong>注</strong>： 覆盖 <code>!important</code> 唯一的办法就是另一个 <code>!important</code> 具有 相同<em>优先级</em> 而且顺序靠后，或者更高优先级。</p>
-<p><strong>但是，强烈建议除了非常情况不要使用它。</strong> <code>!important</code> 改变了层叠的常规工作方式，它会使调试 CSS 问题非常困难，特别是在大型样式表中。</p>
-</li>
-</ul>
-</li>
-<li><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>相互冲突的声明将按以下顺序适用，后一种声明将覆盖前一种声明：</p>
-<ol>
-<li>用户代理样式表中的声明(例如，浏览器的默认样式，在没有设置其他样式时使用)。</li>
-<li>用户样式表中的常规声明(由用户设置的自定义样式)。</li>
-<li>作者样式表中的常规声明(这些是我们web开发人员设置的样式)。</li>
-<li>作者样式表中的<code>!important</code>声明</li>
-<li>用户样式表中的<code>!important</code> 声明</li>
-</ol>
-</li>
-<li><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p><strong>一、无(不可)继承性的属性</strong></p>
-<p>1、display：规定元素应该生成的框的类型</p>
-<p>2、文本属性：</p>
-<p>vertical-align：垂直文本对齐</p>
-<p>text-decoration：规定添加到文本的装饰</p>
-<p>text-shadow：文本阴影效果</p>
-<p>white-space：空白符的处理</p>
-<p>unicode-bidi：设置文本的方向</p>
-<p>3、盒子模型的属性：width、height、margin 、margin-top、margin-right、margin-bottom、margin-left、border、border-style、border-top-style、border-right-style、border-bottom-style、border-left-style、border-width、border-top-width、border-right-right、border-bottom-width、border-left-width、border-color、border-top-color、border-right-color、border-bottom-color、border-left-color、border-top、border-right、border-bottom、border-left、padding、padding-top、padding-right、padding-bottom、padding-left</p>
-<p>4、背景属性：background、background-color、background-image、background-repeat、background-position、background-attachment</p>
-<p>5、定位属性：float、clear、position、top、right、bottom、left、min-width、min-height、max-width、max-height、overflow、clip、z-index</p>
-<p>6、生成内容属性：content、counter-reset、counter-increment</p>
-<p>7、轮廓样式属性：outline-style、outline-width、outline-color、outline</p>
-<p>8、页面样式属性：size、page-break-before、page-break-after</p>
-<p>9、声音样式属性：pause-before、pause-after、pause、cue-before、cue-after、cue、play-during</p>
-<p><strong>二、有继承性的属性</strong></p>
-<p>1、字体系列属性</p>
-<p>font：组合字体</p>
-<p>font-family：规定元素的字体系列</p>
-<p>font-weight：设置字体的粗细</p>
-<p>font-size：设置字体的尺寸</p>
-<p>font-style：定义字体的风格</p>
-<p>font-variant：设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小。</p>
-<p>font-stretch：对当前的 font-family 进行伸缩变形。所有主流浏览器都不支持。</p>
-<p>font-size-adjust：为某个元素规定一个 aspect 值，这样就可以保持首选字体的 x-height。</p>
-<p>2、文本系列属性</p>
-<p>text-indent：文本缩进</p>
-<p>text-align：文本水平对齐</p>
-<p>line-height：行高</p>
-<p>word-spacing：增加或减少单词间的空白（即字间隔）</p>
-<p>letter-spacing：增加或减少字符间的空白（字符间距）</p>
-<p>text-transform：控制文本大小写</p>
-<p>direction：规定文本的书写方向</p>
-<p>color：文本颜色</p>
-<p>3、元素可见性：visibility</p>
-<p>4、表格布局属性：caption-side、border-collapse、border-spacing、empty-cells、table-layout</p>
-<p>5、列表布局属性：list-style-type、list-style-image、list-style-position、list-style</p>
-<p>6、生成内容属性：quotes</p>
-<p>7、光标属性：cursor</p>
-<p>8、页面样式属性：page、page-break-inside、windows、orphans</p>
-<p>9、声音样式属性：speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、、azimuth、elevation</p>
-<p>三、<strong>所有元素可以继承的属性</strong></p>
-<p>1、元素可见性：visibility</p>
-<p>2、光标属性：cursor</p>
-<p>四、<strong>内联元素可以继承的属性</strong></p>
-<p>1、字体系列属性</p>
-<p>2、除text-indent、text-align之外的文本系列属性</p>
-<p>五、<strong>块级元素可以继承的属性</strong></p>
-<p>1、text-indent、text-align</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://codenoobhaha.github.io/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/" data-id="ckrf2f1u700002cnk78u92aqt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css选择器分类" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-css选择器分类" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/" class="article-date">
   <time datetime="2021-07-22T13:20:48.000Z" itemprop="datePublished">2021-07-22</time>
@@ -233,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/">css选择器分类</a>
+    <h1 class="article-title" itemprop="name">
+      css选择器分类
     </h1>
   
 
@@ -592,259 +443,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-正则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/19/%E6%AD%A3%E5%88%99/" class="article-date">
-  <time datetime="2021-07-19T04:40:30.000Z" itemprop="datePublished">2021-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/19/%E6%AD%A3%E5%88%99/">正则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="正则测试网址"><a href="#正则测试网址" class="headerlink" title="正则测试网址"></a>正则测试网址</h2><p><a target="_blank" rel="noopener" href="https://regex101.com/">https://regex101.com/</a></p>
-<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>1.字面量创建正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">正则表达式的test方法，用来检测一个字符串是否能够被匹配到，返回true 或者 false</span><br><span class="line"></span><br><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let a = &#x27;h&#x27;</span><br><span class="line">console.log(/a/.test(str)) //这里检测不到，因为正则表达式不支持使用变量</span><br><span class="line"></span><br><span class="line">要想使用变量</span><br><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let a = &#x27;h&#x27;</span><br><span class="line">console.log(eval(`/$&#123;a&#125;/`).test(str))</span><br></pre></td></tr></table></figure>
-
-<p>2.通过对象创建正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let flag = &#x27;h&#x27;</span><br><span class="line">let reg = new RegExp(str, &#x27;g&#x27;) //通过对象创建正则表达式</span><br><span class="line">str.replace(reg, &#x27;H&#x27;)</span><br><span class="line">str.replace(reg, search =&gt; &#123;return &#x27;H&#x27;&#125;) //可以传函数</span><br></pre></td></tr></table></figure>
-
-<p>3.选择符的使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;helloworld&quot;</span><br><span class="line">/e|o/.test(str)</span><br><span class="line">选择符“|”类似于或操作，这里匹配的是e或者是o</span><br></pre></td></tr></table></figure>
-
-<p>4.正则的转义</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1主要是将正则表达式中一些有明确意义的符号与自己符号本身的意义作区分</span><br><span class="line">如 . 代表任意字符 \. 代表小数点</span><br><span class="line">2在RegExp中，\ 也要被转义</span><br></pre></td></tr></table></figure>
-
-<p>5字符边界约束</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^代表字符起始</span><br><span class="line">$代表字符终止</span><br></pre></td></tr></table></figure>
-
-<p>6.数值与空白元字符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\d 代表匹配任何数字字符</span><br><span class="line">\D 匹配任何非数字字符</span><br><span class="line">\s 匹配任何空字符串</span><br><span class="line">\S 匹配任何非空字符串</span><br></pre></td></tr></table></figure>
-
-<p>7w与W元字符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\w 匹配任何数字字母字符</span><br><span class="line">\W 匹配任何非数字字母字符</span><br></pre></td></tr></table></figure>
-
-<p>8 .元字符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. 匹配任何字符，除了换行符</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://codenoobhaha.github.io/2021/07/19/%E6%AD%A3%E5%88%99/" data-id="ckrf2f1uh00062cnkdti55f9f" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-new-Vue发生了什么" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" class="article-date">
-  <time datetime="2021-07-15T09:58:31.000Z" itemprop="datePublished">2021-07-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          css层叠与继承
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">new Vue发生了什么</a>
-    </h1>
   
+    <a href="/2021/07/19/%E6%AD%A3%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">正则</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="new-Vue"><a href="#new-Vue" class="headerlink" title="new Vue"></a>new Vue</h2><p>1.构造函数中执行<code>vm._init()</code>（也就是我们 new Vue()这个对象的时候执行）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span> &amp;&amp;</span><br><span class="line">    !(<span class="built_in">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">&#x27;Vue is a constructor and should be called with the `new` keyword&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.在_init()方法中执行一系列初始化操作</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主要操作</span></span><br><span class="line"><span class="comment">// 1.保存当前vue的实例</span></span><br><span class="line"><span class="keyword">const</span> vm: Component = <span class="built_in">this</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.合并配置</span></span><br><span class="line"><span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    initInternalComponent(vm, options)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(</span><br><span class="line">        resolveConstructorOptions(vm.constructor),</span><br><span class="line">        options || &#123;&#125;,</span><br><span class="line">        vm</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.初始化一系列配置</span></span><br><span class="line">vm._self = vm</span><br><span class="line">initLifecycle(vm)</span><br><span class="line">initEvents(vm)</span><br><span class="line">initRender(vm)</span><br><span class="line">callHook(vm, <span class="string">&#x27;beforeCreate&#x27;</span>)</span><br><span class="line">initInjections(vm) <span class="comment">// resolve injections before data/props</span></span><br><span class="line">initState(vm)</span><br><span class="line">initProvide(vm) <span class="comment">// resolve provide after data/props</span></span><br><span class="line">callHook(vm, <span class="string">&#x27;created&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.执行挂载</span></span><br><span class="line"><span class="keyword">if</span> (vm.$options.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.重点分析一下$mount</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">首先，$mount是与平台相关的</span><br><span class="line">其次，我们主要分析在runtime-<span class="keyword">with</span>-compiler版本中他做了什么</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.首先缓存runtime-only版本中的$mount方法</span></span><br><span class="line"><span class="keyword">const</span> mount = Vue.prototype.$mount</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.判断el是否合法（el就是vue要挂载的节点，它不能是&lt;body&gt;和&lt;html&gt;元素）</span></span><br><span class="line"><span class="keyword">if</span> (el === <span class="built_in">document</span>.body || el === <span class="built_in">document</span>.documentElement) &#123;</span><br><span class="line">	process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span> &amp;&amp; warn(</span><br><span class="line">	<span class="string">`Do not mount Vue to &lt;html&gt; or &lt;body&gt; - mount to normal elements instead.`</span></span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">this</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.判断是否已经有了render函数</span></span><br><span class="line"><span class="keyword">if</span> (!options.render) &#123;</span><br><span class="line">    <span class="comment">//4.判断是否配置了template</span></span><br><span class="line">    <span class="keyword">let</span> template = options.template</span><br><span class="line">    <span class="keyword">if</span> (template) &#123;</span><br><span class="line">        <span class="comment">//有就判断能否找到template定义的模板</span></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//没有就创建一个空的div节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//5.template存在就将他解析为render函数</span></span><br><span class="line">    <span class="keyword">if</span> (template) &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; render, staticRenderFns &#125; = compileToFunctions(template, &#123;</span><br><span class="line">            <span class="attr">outputSourceRange</span>: process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">            shouldDecodeNewlines,</span><br><span class="line">            shouldDecodeNewlinesForHref,</span><br><span class="line">            <span class="attr">delimiters</span>: options.delimiters,</span><br><span class="line">            <span class="attr">comments</span>: options.comments</span><br><span class="line">          &#125;, <span class="built_in">this</span>)</span><br><span class="line">          options.render = render</span><br><span class="line">          options.staticRenderFns = staticRenderFns</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//6.最后调用runtime-only版本的$mount函数</span></span><br><span class="line"><span class="keyword">return</span> mount.call(<span class="built_in">this</span>, el, hydrating)</span><br></pre></td></tr></table></figure>
-
-<p>4.runtime-only版本的$mount函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$mount = function (</span><br><span class="line">  el?: string | Element,</span><br><span class="line">  hydrating?: boolean</span><br><span class="line">): Component &#123;</span><br><span class="line">  el = el &amp;&amp; inBrowser ? query(el) : undefined</span><br><span class="line">  //可以看到，他返回的是mountComponent函数的返回值</span><br><span class="line">  return mountComponent(this, el, hydrating)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.继续看mountComponent</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 1.如果经过之前的步骤还是没有生成render函数，就为他创建一个新节点</span><br><span class="line">if (!vm.$options.render) &#123;</span><br><span class="line">    vm.$options.render = createEmptyVNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//2.创建渲染watcher的update函数</span><br><span class="line">updateComponent = () =&gt; &#123;</span><br><span class="line">	vm._update(vm._render(), hydrating)</span><br><span class="line">&#125;</span><br><span class="line">//3.创建渲染watcher，并将渲染watcher的update函数传入</span><br><span class="line">new Watcher(vm, updateComponent, noop, &#123;</span><br><span class="line">    before () &#123;</span><br><span class="line">      if (vm._isMounted &amp;&amp; !vm._isDestroyed) &#123;</span><br><span class="line">        callHook(vm, &#x27;beforeUpdate&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>6.接着看vm._render</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._render = function (): VNode &#123;</span><br><span class="line">    //通过$createElement函数生成虚拟vnode</span><br><span class="line">    //调用_render生成虚拟dom树</span><br><span class="line">	vnode = render.call(vm._renderProxy, vm.$createElement)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>7vm._update</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://codenoobhaha.github.io/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" data-id="ckrf2f1ud00022cnk8ky7ctf8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-vue双向绑定原理及diff算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/" class="article-date">
-  <time datetime="2021-07-15T07:59:36.000Z" itemprop="datePublished">2021-07-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/">vue双向绑定原理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="VUE双向绑定"><a href="#VUE双向绑定" class="headerlink" title="VUE双向绑定"></a>VUE双向绑定</h1><ol>
-<li><p>原理</p>
-<p>vue的双向数据绑定是通过<strong>数据劫持</strong>结合<strong>发布订阅</strong>模式实现的，也就是数据与视图同步，数据发生变化，视图跟着变化，反之亦然。</p>
-</li>
-<li><p>核心</p>
-<p>采用了Object.defineProperty(obj, prop, descriptor)方法，这个方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象</p>
-<p><strong>参数</strong></p>
-<p>obj：要定义属性的对象</p>
-<p>prop：定义或修改的属性的名称或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> </p>
-<p>descriptor：要定义或修改的属性描述符</p>
-<p><strong>返回值</strong></p>
-<p>被传递给函数的对象。</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.首先创建一个观察者(observe)</span><br><span class="line">2.之后观察vue配置中，data函数返回的对象里的每一个值，对其进行数据劫持</span><br><span class="line">3.创建一个Dep(Dependency)依赖收集器，作用是收集对当前数据有依赖的watcher(既可以是渲染watch也可以是数据watcher)</span><br><span class="line">4.收集是通过watcher获取当前数据时进行的(数据的get被触发，这里会让Dep.target指向当前watcher，同时将该watcher add进Dep中，然后释放Dep.target = null)</span><br><span class="line">5.当数据有变化的时候，即：数据的set方法触发之后，调用Dep的notify()通知每一个对该数据有依赖的watcher进行数据更新。</span><br><span class="line">6.在watcher中会调用他的update方法更新数据或者视图</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="虚拟dom和diff算法"><a href="#虚拟dom和diff算法" class="headerlink" title="虚拟dom和diff算法"></a>虚拟dom和diff算法</h1><p><strong>虚拟dom</strong></p>
-<p>就是用一个原生的js对象去描述一个dom节点，所以它比创建一个dom的代价小的多</p>
-<p><strong>vnode</strong></p>
-<p>是对真实dom的一种抽象描述，他映射到真实dom需要经过：vnode的create、diff、patch过程</p>
-<p>Vue的Diff算法原理是，只比较同级的节点，若找不到与新节点类型相同的节点，则插入一个新节点，若有相同类型的节点则进行节点属性的更新，最后删除新节点列表中不包含的旧节点。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>vue的diff算法中首先有<span class="number">4</span>个哨兵节点：</span><br><span class="line">	oldStartIdx：旧节点起始下标 对应oldStartVnode</span><br><span class="line">	newStartIdx：新节点起始下标 对应newStartVnode</span><br><span class="line">	oldEndIdx：旧节点终止下标 对应oldEndVnode</span><br><span class="line">	newEndIdx：新节点终止下标 对应newEndVnode</span><br><span class="line"><span class="number">2.</span>当哨兵满足</span><br><span class="line">	oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx</span><br><span class="line">    的条件的时候，我们会循环进行一系列节点之间的比较</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">1</span>：oldStartVnode是否为空，若为<span class="literal">true</span>则oldStartIdx向后移动，继续下一个节点的判断</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">2</span>：oldEndVnode是否为空，若为<span class="literal">true</span>则oldEndIdx向前移动</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">3</span>：使用 sameVnode，判断oldStartVnode和newStartVnode未判断的头节点是否为相同节点，若为<span class="literal">true</span>，则按照上面思路说的,对相同类型节点进行节点的属性的更新并修改哨兵位置</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">4</span>：使用上一步相同的方法对oldEndVnode和newEndVnode进行判断。并执行相同的更新操作</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">5</span>：使用sameVNode判断旧列表的头节点和新列表的尾节点进行判断，</span><br><span class="line">sameVnode(oldStartVnode, newEndVnode)，若为<span class="literal">true</span>，更新相同节点，若该节点可以移动，在真实DOM中将oldStartVnode放到真实节点列表的最后。</span><br><span class="line"></span><br><span class="line">	判断<span class="number">6</span>：使用sameVnode比较旧列表的尾节点和新列表的头节点，若为<span class="literal">true</span>，和上面一样，更新相同节点，将oldEndVnode放到真实节点列表的最开始。</span><br><span class="line">	</span><br><span class="line">	若节点不满足上面的所有判断，则会进入到最后一个条件分支，判断<span class="number">7</span>：</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// oldKeyToIdx为after列表中key和index的映射，可以加快查找速度</span></span><br><span class="line">        <span class="keyword">if</span> (isUndef(oldKeyToIdx)) &#123;</span><br><span class="line">            <span class="comment">// 若不存在该映射则去初始化映射</span></span><br><span class="line">            oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 若newStartVnode存在key的情况，则去映射中查找，若无则从oldStartIdx到oldEndIdx遍历after列表查找新节点是否存在</span></span><br><span class="line">        idxInOld = isDef(newStartVnode.key)</span><br><span class="line">              ? oldKeyToIdx[newStartVnode.key]</span><br><span class="line">              : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">        <span class="comment">// 若新节点不存在于旧节点数组中，新建一个元素并插入真实DOM节点列表中</span></span><br><span class="line">        <span class="keyword">if</span> (isUndef(idxInOld)) &#123; <span class="comment">// New element</span></span><br><span class="line">            createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="literal">false</span>, newCh, newStartIdx)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 若在旧列表中查找到新节点，则去判断两个节点是否相等</span></span><br><span class="line">            vnodeToMove = oldCh[idxInOld]</span><br><span class="line">            <span class="keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123;</span><br><span class="line">                <span class="comment">// 更新节点内容和哨兵并进行节点的移动</span></span><br><span class="line">                patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue)</span><br><span class="line">                oldCh[idxInOld] = <span class="literal">undefined</span></span><br><span class="line">                canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// same key but different element. treat as new element</span></span><br><span class="line">                createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="literal">false</span>, newCh, newStartIdx)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        newStartVnode = newCh[++newStartIdx]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	最后</span><br><span class="line">    循环结束</span><br><span class="line">        最后当oldStartIdx &gt; oldEndIdx || newStartIdx &gt; newEndIdx，也就是新或旧节点数组有一个被查	找完之后则退出判断循环。当循环结束时，旧节点数组中剩下的节点即为要删除的节点，新节点数组中剩下的即为要新增的节点。只需要进行简单的新增和删除操作即可，</span><br></pre></td></tr></table></figure>
-
-<p><strong>就地复用</strong></p>
-<p>在Diff中会使用到一种就地复用的策略。</p>
-<p>就地复用是指Vue会尽可能复用之前的DOM，尽可能不发生DOM的移动。</p>
-<p><strong>原理</strong></p>
-<p>Vue判断新旧节点是否为相同节点（也就是上面的sameVnode方法），这个相同节点的意思并不是两个完全相同的节点，实际上它仅判断是否为同类节点（同类节点为类型相同且节点数据一致，如前后两个span，span标签上的属性没有改变，但是里面的内容变了，这样就算作同类节点），如果是同类节点，那么Vue会直接复用旧DOM节点，只要更新节点中的内容即可。这样可以大大减少列表中节点的移动操作。</p>
-<p><strong>总结</strong></p>
-<p>Vue中的Diff算法采用同层节点进行比较，在比较的过程中，使用了一些优先判断和就地复用策略，提高了Diff算法的效率。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://codenoobhaha.github.io/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/" data-id="ckrf2f1uf00042cnk9g6hh5qz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-introduce" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/14/introduce/" class="article-date">
-  <time datetime="2021-07-14T07:15:17.262Z" itemprop="datePublished">2021-07-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/14/introduce/">自我介绍模板</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="自我介绍模板"><a href="#自我介绍模板" class="headerlink" title="自我介绍模板"></a>自我介绍模板</h1><p>面试官，您好：</p>
-<p>​       我叫xxx，xxx年xx月xx日毕业于xx大学，同年通过校招进入上一家公司：xxx。</p>
-<p>​       刚进公司，作为一个新人，我认真把握住每个学习的机会，积极参与项目的需求分析，代码编写与优化。对于我的本职工作xx开发，我都是认真负责完成，那时虽然很忙，压力很大，但是我真的学到了不少的东西，同时在后期的项目维护工作中，我也很积极地在参与。</p>
-<p>​       在上一家公司中，我收获的不仅仅是技术能力，通过参与项目还提高了我的业务能力、沟通能力以及自学能力。</p>
-<p>​        在技术方面，我一直从事xxx方面的工作，学习和掌握到的技术有：~~~等。</p>
-<p>​        性格方面，与同事、朋友相处的时候，比较外向；代码开发的时候喜欢全心全意投入到工作中。</p>
-<p>​        以上就是我的自我介绍。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">要点：1.限时大概1-3分钟吧</span><br><span class="line">	 2.语速别太快</span><br><span class="line">	 3.能多说的地方：时间不够，就在学习和掌握到的技术这里，结合实际多说几句吧。</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://codenoobhaha.github.io/2021/07/14/introduce/" data-id="ckrf2f1ub00012cnk4j3nf9uh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         

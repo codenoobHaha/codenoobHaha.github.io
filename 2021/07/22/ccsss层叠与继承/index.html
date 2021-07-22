@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>css层叠与继承 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是层叠？ 简单的说，css规则的顺序很重要；当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。 1234567h1 &amp;#123;     color: red; &amp;#125;h1 &amp;#123;     color: blue; &amp;#125;&lt;h1&gt;This is my heading.&lt;&#x2F;h1&gt; &lt;!--会变蓝--&gt;   优先级浏览器是根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css层叠与继承">
+<meta property="og:url" content="http://codenoobhaha.github.io/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是层叠？ 简单的说，css规则的顺序很重要；当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。 1234567h1 &amp;#123;     color: red; &amp;#125;h1 &amp;#123;     color: blue; &amp;#125;&lt;h1&gt;This is my heading.&lt;&#x2F;h1&gt; &lt;!--会变蓝--&gt;   优先级浏览器是根">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-22T14:57:40.000Z">
+<meta property="article:modified_time" content="2021-07-22T15:20:59.755Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codenoobHaha.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ccsss层叠与继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/" class="article-date">
+  <time datetime="2021-07-22T14:57:40.000Z" itemprop="datePublished">2021-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css层叠与继承
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是层叠？"><a href="#什么是层叠？" class="headerlink" title="什么是层叠？"></a>什么是层叠？</h2><p> 简单的说，css规则的顺序很重要；当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123; </span><br><span class="line">    color: red; </span><br><span class="line">&#125;</span><br><span class="line">h1 &#123; </span><br><span class="line">    color: blue; </span><br><span class="line">&#125;</span><br><span class="line">&lt;h1&gt;This is my heading.&lt;/h1&gt; &lt;!--会变蓝--&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>浏览器是根据优先级来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。它基本上是一个衡量选择器具体选择哪些区域的尺度：</p>
+</li>
+<li><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>一些设置在父元素上的css属性是可以被子元素继承的，有些则不能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">span &#123;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;没设置也变蓝&lt;/p&gt;</span><br><span class="line">&lt;p&gt;没设置也变蓝&lt;span&gt;没变，因为指定了颜色&lt;/span&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>控制继承</p>
+<p>CSS 为控制继承提供了四个特殊的通用属性值。每个css属性都接收这些值。</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit"><code>inherit</code></a></p>
+<p>设置该属性会使子元素属性和父元素相同。实际上，就是 “开启继承”.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial"><code>initial</code></a></p>
+<p>设置属性值和浏览器默认样式相同。如果浏览器默认样式中未设置且该属性是自然继承的，那么会设置为 <code>inherit</code> 。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset"><code>unset</code></a></p>
+<p>将属性重置为自然值，也就是如果属性是自然继承那么就是 <code>inherit</code>，否则和 <code>initial</code>一样</p>
+</li>
+</ul>
+<p><strong>注</strong>: 还有一个新的属性, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/revert"><code>revert</code> (en-US)</a>， 只有很少的浏览器支持。</p>
+</li>
+</ul>
+</li>
+<li><h3 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h3><p>​    有三个因素需要考虑，根据重要性排序如下，前面的更重要：</p>
+<pre><code>    1. 重要程度
+    2. 优先级
+    3. 资源顺序
+</code></pre>
+<ul>
+<li><p>资源顺序</p>
+<p>如果你有超过一条规则，而且都是相同的权重，那么最后面的规则会应用。可以理解为后面的规则覆盖前面的规则，直到最后一个开始设置样式。</p>
+</li>
+<li><p>优先级</p>
+<p>在一些情况下，有些规则在最后出现，但是却应用了前面的规则。这是因为前面的有更高的<strong>优先级</strong> — 它范围更小，因此浏览器就把它选择为元素的样式。</p>
+<p>一个选择器的优先级可以说是由四个部分相加 (分量)，可以认为是个十百千 — 四位数的四个位数：</p>
+<ol>
+<li><strong>千位</strong>： 如果声明在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-style"><code>style</code></a> 的属性（内联样式）则该位得一分。这样的声明没有选择器，所以它得分总是1000。</li>
+<li><strong>百位</strong>： 选择器中包含ID选择器则该位得一分。</li>
+<li><strong>十位</strong>： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。</li>
+<li><strong>个位</strong>：选择器中包含元素、伪元素选择器则该位得一分。</li>
+<li><strong>注</strong>: 通用选择器 (<code>*</code>)，组合符 (<code>+</code>, <code>&gt;</code>, <code>~</code>, ‘ ‘)，和否定伪类 (<code>:not</code>) 不会影响优先级。</li>
+<li><strong>警告:</strong> 在进行计算时不允许进行进位，例如，20 个类选择器仅仅意味着 20 个十位，而不能视为 两个百位，也就是说，无论多少个类选择器的权重叠加，都不会超过一个 ID 选择器。</li>
+</ol>
+</li>
+<li><p>重要程度</p>
+<p>指的是<code>!important</code></p>
+<p>有一个特殊的 CSS 可以用来覆盖所有上面所有优先级计算，不过需要很小心的使用 — <code>!important</code>。用于修改特定属性的值， 能够覆盖普通规则的层叠。</p>
+<p><strong>注</strong>： 覆盖 <code>!important</code> 唯一的办法就是另一个 <code>!important</code> 具有 相同<em>优先级</em> 而且顺序靠后，或者更高优先级。</p>
+<p><strong>但是，强烈建议除了非常情况不要使用它。</strong> <code>!important</code> 改变了层叠的常规工作方式，它会使调试 CSS 问题非常困难，特别是在大型样式表中。</p>
+</li>
+</ul>
+</li>
+<li><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>相互冲突的声明将按以下顺序适用，后一种声明将覆盖前一种声明：</p>
+<ol>
+<li>用户代理样式表中的声明(例如，浏览器的默认样式，在没有设置其他样式时使用)。</li>
+<li>用户样式表中的常规声明(由用户设置的自定义样式)。</li>
+<li>作者样式表中的常规声明(这些是我们web开发人员设置的样式)。</li>
+<li>作者样式表中的<code>!important</code>声明</li>
+<li>用户样式表中的<code>!important</code> 声明</li>
+</ol>
+</li>
+<li><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p><strong>一、无(不可)继承性的属性</strong></p>
+<p>1、display：规定元素应该生成的框的类型</p>
+<p>2、文本属性：</p>
+<p>vertical-align：垂直文本对齐</p>
+<p>text-decoration：规定添加到文本的装饰</p>
+<p>text-shadow：文本阴影效果</p>
+<p>white-space：空白符的处理</p>
+<p>unicode-bidi：设置文本的方向</p>
+<p>3、盒子模型的属性：width、height、margin 、margin-top、margin-right、margin-bottom、margin-left、border、border-style、border-top-style、border-right-style、border-bottom-style、border-left-style、border-width、border-top-width、border-right-right、border-bottom-width、border-left-width、border-color、border-top-color、border-right-color、border-bottom-color、border-left-color、border-top、border-right、border-bottom、border-left、padding、padding-top、padding-right、padding-bottom、padding-left</p>
+<p>4、背景属性：background、background-color、background-image、background-repeat、background-position、background-attachment</p>
+<p>5、定位属性：float、clear、position、top、right、bottom、left、min-width、min-height、max-width、max-height、overflow、clip、z-index</p>
+<p>6、生成内容属性：content、counter-reset、counter-increment</p>
+<p>7、轮廓样式属性：outline-style、outline-width、outline-color、outline</p>
+<p>8、页面样式属性：size、page-break-before、page-break-after</p>
+<p>9、声音样式属性：pause-before、pause-after、pause、cue-before、cue-after、cue、play-during</p>
+<p><strong>二、有继承性的属性</strong></p>
+<p>1、字体系列属性</p>
+<p>font：组合字体</p>
+<p>font-family：规定元素的字体系列</p>
+<p>font-weight：设置字体的粗细</p>
+<p>font-size：设置字体的尺寸</p>
+<p>font-style：定义字体的风格</p>
+<p>font-variant：设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小。</p>
+<p>font-stretch：对当前的 font-family 进行伸缩变形。所有主流浏览器都不支持。</p>
+<p>font-size-adjust：为某个元素规定一个 aspect 值，这样就可以保持首选字体的 x-height。</p>
+<p>2、文本系列属性</p>
+<p>text-indent：文本缩进</p>
+<p>text-align：文本水平对齐</p>
+<p>line-height：行高</p>
+<p>word-spacing：增加或减少单词间的空白（即字间隔）</p>
+<p>letter-spacing：增加或减少字符间的空白（字符间距）</p>
+<p>text-transform：控制文本大小写</p>
+<p>direction：规定文本的书写方向</p>
+<p>color：文本颜色</p>
+<p>3、元素可见性：visibility</p>
+<p>4、表格布局属性：caption-side、border-collapse、border-spacing、empty-cells、table-layout</p>
+<p>5、列表布局属性：list-style-type、list-style-image、list-style-position、list-style</p>
+<p>6、生成内容属性：quotes</p>
+<p>7、光标属性：cursor</p>
+<p>8、页面样式属性：page、page-break-inside、windows、orphans</p>
+<p>9、声音样式属性：speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、、azimuth、elevation</p>
+<p>三、<strong>所有元素可以继承的属性</strong></p>
+<p>1、元素可见性：visibility</p>
+<p>2、光标属性：cursor</p>
+<p>四、<strong>内联元素可以继承的属性</strong></p>
+<p>1、字体系列属性</p>
+<p>2、除text-indent、text-align之外的文本系列属性</p>
+<p>五、<strong>块级元素可以继承的属性</strong></p>
+<p>1、text-indent、text-align</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codenoobhaha.github.io/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/" data-id="ckrf2f1u700002cnk78u92aqt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">css选择器分类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/">css层叠与继承</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/">css选择器分类</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/19/%E6%AD%A3%E5%88%99/">正则</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">new Vue发生了什么</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/">vue双向绑定原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

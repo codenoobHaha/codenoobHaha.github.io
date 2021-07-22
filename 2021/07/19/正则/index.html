@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>正则 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正则测试网址https:&#x2F;&#x2F;regex101.com&#x2F; 正则表达式语法1.字面量创建正则表达式 12345678910正则表达式的test方法，用来检测一个字符串是否能够被匹配到，返回true 或者 falselet str &#x3D; &amp;#x27;helloworld&amp;#x27;let a &#x3D; &amp;#x27;h&amp;#x27;console.log(&#x2F;a&#x2F;.test(str)) &#x2F;&#x2F;这里检测不到，因为正则表达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则">
+<meta property="og:url" content="http://codenoobhaha.github.io/2021/07/19/%E6%AD%A3%E5%88%99/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="正则测试网址https:&#x2F;&#x2F;regex101.com&#x2F; 正则表达式语法1.字面量创建正则表达式 12345678910正则表达式的test方法，用来检测一个字符串是否能够被匹配到，返回true 或者 falselet str &#x3D; &amp;#x27;helloworld&amp;#x27;let a &#x3D; &amp;#x27;h&amp;#x27;console.log(&#x2F;a&#x2F;.test(str)) &#x2F;&#x2F;这里检测不到，因为正则表达">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-19T04:40:30.000Z">
+<meta property="article:modified_time" content="2021-07-19T07:59:10.414Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="通用">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codenoobHaha.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-正则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/19/%E6%AD%A3%E5%88%99/" class="article-date">
+  <time datetime="2021-07-19T04:40:30.000Z" itemprop="datePublished">2021-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="正则测试网址"><a href="#正则测试网址" class="headerlink" title="正则测试网址"></a>正则测试网址</h2><p><a target="_blank" rel="noopener" href="https://regex101.com/">https://regex101.com/</a></p>
+<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>1.字面量创建正则表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">正则表达式的test方法，用来检测一个字符串是否能够被匹配到，返回true 或者 false</span><br><span class="line"></span><br><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let a = &#x27;h&#x27;</span><br><span class="line">console.log(/a/.test(str)) //这里检测不到，因为正则表达式不支持使用变量</span><br><span class="line"></span><br><span class="line">要想使用变量</span><br><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let a = &#x27;h&#x27;</span><br><span class="line">console.log(eval(`/$&#123;a&#125;/`).test(str))</span><br></pre></td></tr></table></figure>
+
+<p>2.通过对象创建正则表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str = &#x27;helloworld&#x27;</span><br><span class="line">let flag = &#x27;h&#x27;</span><br><span class="line">let reg = new RegExp(str, &#x27;g&#x27;) //通过对象创建正则表达式</span><br><span class="line">str.replace(reg, &#x27;H&#x27;)</span><br><span class="line">str.replace(reg, search =&gt; &#123;return &#x27;H&#x27;&#125;) //可以传函数</span><br></pre></td></tr></table></figure>
+
+<p>3.选择符的使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;helloworld&quot;</span><br><span class="line">/e|o/.test(str)</span><br><span class="line">选择符“|”类似于或操作，这里匹配的是e或者是o</span><br></pre></td></tr></table></figure>
+
+<p>4.正则的转义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1主要是将正则表达式中一些有明确意义的符号与自己符号本身的意义作区分</span><br><span class="line">如 . 代表任意字符 \. 代表小数点</span><br><span class="line">2在RegExp中，\ 也要被转义</span><br></pre></td></tr></table></figure>
+
+<p>5字符边界约束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^代表字符起始</span><br><span class="line">$代表字符终止</span><br></pre></td></tr></table></figure>
+
+<p>6.数值与空白元字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\d 代表匹配任何数字字符</span><br><span class="line">\D 匹配任何非数字字符</span><br><span class="line">\s 匹配任何空字符串</span><br><span class="line">\S 匹配任何非空字符串</span><br></pre></td></tr></table></figure>
+
+<p>7w与W元字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\w 匹配任何数字字母字符</span><br><span class="line">\W 匹配任何非数字字母字符</span><br></pre></td></tr></table></figure>
+
+<p>8 .元字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. 匹配任何字符，除了换行符</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codenoobhaha.github.io/2021/07/19/%E6%AD%A3%E5%88%99/" data-id="ckrf2f1uh00062cnkdti55f9f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          css选择器分类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">new Vue发生了什么</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/">css层叠与继承</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/">css选择器分类</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/19/%E6%AD%A3%E5%88%99/">正则</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">new Vue发生了什么</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/">vue双向绑定原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

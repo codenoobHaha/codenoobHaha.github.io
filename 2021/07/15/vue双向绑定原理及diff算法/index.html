@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue双向绑定原理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="VUE双向绑定 原理 vue的双向数据绑定是通过数据劫持结合发布订阅模式实现的，也就是数据与视图同步，数据发生变化，视图跟着变化，反之亦然。  核心 采用了Object.defineProperty(obj, prop, descriptor)方法，这个方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象 参数 obj：要定义属性的对象 prop：定义或修改的属性的名称或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue双向绑定原理">
+<meta property="og:url" content="http://codenoobhaha.github.io/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="VUE双向绑定 原理 vue的双向数据绑定是通过数据劫持结合发布订阅模式实现的，也就是数据与视图同步，数据发生变化，视图跟着变化，反之亦然。  核心 采用了Object.defineProperty(obj, prop, descriptor)方法，这个方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象 参数 obj：要定义属性的对象 prop：定义或修改的属性的名称或">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-15T07:59:36.000Z">
+<meta property="article:modified_time" content="2021-07-16T13:21:44.295Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://codenoobHaha.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue双向绑定原理及diff算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2021-07-15T07:59:36.000Z" itemprop="datePublished">2021-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue双向绑定原理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VUE双向绑定"><a href="#VUE双向绑定" class="headerlink" title="VUE双向绑定"></a>VUE双向绑定</h1><ol>
+<li><p>原理</p>
+<p>vue的双向数据绑定是通过<strong>数据劫持</strong>结合<strong>发布订阅</strong>模式实现的，也就是数据与视图同步，数据发生变化，视图跟着变化，反之亦然。</p>
+</li>
+<li><p>核心</p>
+<p>采用了Object.defineProperty(obj, prop, descriptor)方法，这个方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象</p>
+<p><strong>参数</strong></p>
+<p>obj：要定义属性的对象</p>
+<p>prop：定义或修改的属性的名称或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> </p>
+<p>descriptor：要定义或修改的属性描述符</p>
+<p><strong>返回值</strong></p>
+<p>被传递给函数的对象。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.首先创建一个观察者(observe)</span><br><span class="line">2.之后观察vue配置中，data函数返回的对象里的每一个值，对其进行数据劫持</span><br><span class="line">3.创建一个Dep(Dependency)依赖收集器，作用是收集对当前数据有依赖的watcher(既可以是渲染watch也可以是数据watcher)</span><br><span class="line">4.收集是通过watcher获取当前数据时进行的(数据的get被触发，这里会让Dep.target指向当前watcher，同时将该watcher add进Dep中，然后释放Dep.target = null)</span><br><span class="line">5.当数据有变化的时候，即：数据的set方法触发之后，调用Dep的notify()通知每一个对该数据有依赖的watcher进行数据更新。</span><br><span class="line">6.在watcher中会调用他的update方法更新数据或者视图</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="虚拟dom和diff算法"><a href="#虚拟dom和diff算法" class="headerlink" title="虚拟dom和diff算法"></a>虚拟dom和diff算法</h1><p><strong>虚拟dom</strong></p>
+<p>就是用一个原生的js对象去描述一个dom节点，所以它比创建一个dom的代价小的多</p>
+<p><strong>vnode</strong></p>
+<p>是对真实dom的一种抽象描述，他映射到真实dom需要经过：vnode的create、diff、patch过程</p>
+<p>Vue的Diff算法原理是，只比较同级的节点，若找不到与新节点类型相同的节点，则插入一个新节点，若有相同类型的节点则进行节点属性的更新，最后删除新节点列表中不包含的旧节点。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>vue的diff算法中首先有<span class="number">4</span>个哨兵节点：</span><br><span class="line">	oldStartIdx：旧节点起始下标 对应oldStartVnode</span><br><span class="line">	newStartIdx：新节点起始下标 对应newStartVnode</span><br><span class="line">	oldEndIdx：旧节点终止下标 对应oldEndVnode</span><br><span class="line">	newEndIdx：新节点终止下标 对应newEndVnode</span><br><span class="line"><span class="number">2.</span>当哨兵满足</span><br><span class="line">	oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx</span><br><span class="line">    的条件的时候，我们会循环进行一系列节点之间的比较</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">1</span>：oldStartVnode是否为空，若为<span class="literal">true</span>则oldStartIdx向后移动，继续下一个节点的判断</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">2</span>：oldEndVnode是否为空，若为<span class="literal">true</span>则oldEndIdx向前移动</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">3</span>：使用 sameVnode，判断oldStartVnode和newStartVnode未判断的头节点是否为相同节点，若为<span class="literal">true</span>，则按照上面思路说的,对相同类型节点进行节点的属性的更新并修改哨兵位置</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">4</span>：使用上一步相同的方法对oldEndVnode和newEndVnode进行判断。并执行相同的更新操作</span><br><span class="line">    </span><br><span class="line">    判断<span class="number">5</span>：使用sameVNode判断旧列表的头节点和新列表的尾节点进行判断，</span><br><span class="line">sameVnode(oldStartVnode, newEndVnode)，若为<span class="literal">true</span>，更新相同节点，若该节点可以移动，在真实DOM中将oldStartVnode放到真实节点列表的最后。</span><br><span class="line"></span><br><span class="line">	判断<span class="number">6</span>：使用sameVnode比较旧列表的尾节点和新列表的头节点，若为<span class="literal">true</span>，和上面一样，更新相同节点，将oldEndVnode放到真实节点列表的最开始。</span><br><span class="line">	</span><br><span class="line">	若节点不满足上面的所有判断，则会进入到最后一个条件分支，判断<span class="number">7</span>：</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// oldKeyToIdx为after列表中key和index的映射，可以加快查找速度</span></span><br><span class="line">        <span class="keyword">if</span> (isUndef(oldKeyToIdx)) &#123;</span><br><span class="line">            <span class="comment">// 若不存在该映射则去初始化映射</span></span><br><span class="line">            oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 若newStartVnode存在key的情况，则去映射中查找，若无则从oldStartIdx到oldEndIdx遍历after列表查找新节点是否存在</span></span><br><span class="line">        idxInOld = isDef(newStartVnode.key)</span><br><span class="line">              ? oldKeyToIdx[newStartVnode.key]</span><br><span class="line">              : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">        <span class="comment">// 若新节点不存在于旧节点数组中，新建一个元素并插入真实DOM节点列表中</span></span><br><span class="line">        <span class="keyword">if</span> (isUndef(idxInOld)) &#123; <span class="comment">// New element</span></span><br><span class="line">            createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="literal">false</span>, newCh, newStartIdx)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 若在旧列表中查找到新节点，则去判断两个节点是否相等</span></span><br><span class="line">            vnodeToMove = oldCh[idxInOld]</span><br><span class="line">            <span class="keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123;</span><br><span class="line">                <span class="comment">// 更新节点内容和哨兵并进行节点的移动</span></span><br><span class="line">                patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue)</span><br><span class="line">                oldCh[idxInOld] = <span class="literal">undefined</span></span><br><span class="line">                canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// same key but different element. treat as new element</span></span><br><span class="line">                createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="literal">false</span>, newCh, newStartIdx)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        newStartVnode = newCh[++newStartIdx]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	最后</span><br><span class="line">    循环结束</span><br><span class="line">        最后当oldStartIdx &gt; oldEndIdx || newStartIdx &gt; newEndIdx，也就是新或旧节点数组有一个被查	找完之后则退出判断循环。当循环结束时，旧节点数组中剩下的节点即为要删除的节点，新节点数组中剩下的即为要新增的节点。只需要进行简单的新增和删除操作即可，</span><br></pre></td></tr></table></figure>
+
+<p><strong>就地复用</strong></p>
+<p>在Diff中会使用到一种就地复用的策略。</p>
+<p>就地复用是指Vue会尽可能复用之前的DOM，尽可能不发生DOM的移动。</p>
+<p><strong>原理</strong></p>
+<p>Vue判断新旧节点是否为相同节点（也就是上面的sameVnode方法），这个相同节点的意思并不是两个完全相同的节点，实际上它仅判断是否为同类节点（同类节点为类型相同且节点数据一致，如前后两个span，span标签上的属性没有改变，但是里面的内容变了，这样就算作同类节点），如果是同类节点，那么Vue会直接复用旧DOM节点，只要更新节点中的内容即可。这样可以大大减少列表中节点的移动操作。</p>
+<p><strong>总结</strong></p>
+<p>Vue中的Diff算法采用同层节点进行比较，在比较的过程中，使用了一些优先判断和就地复用策略，提高了Diff算法的效率。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://codenoobhaha.github.io/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/" data-id="ckrf2f1uf00042cnk9g6hh5qz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          new Vue发生了什么
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/14/introduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">自我介绍模板</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8/" rel="tag">通用</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E9%80%9A%E7%94%A8/" style="font-size: 10px;">通用</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/07/22/ccsss%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF/">css层叠与继承</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/22/css%E9%80%89%E6%8B%A9%E5%99%A8%E5%88%86%E7%B1%BB/">css选择器分类</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/19/%E6%AD%A3%E5%88%99/">正则</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/new-Vue%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/">new Vue发生了什么</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/15/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86%E5%8F%8Adiff%E7%AE%97%E6%B3%95/">vue双向绑定原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
